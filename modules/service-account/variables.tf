@@ -21,14 +21,17 @@ variable "google_service_account_display_name" {
 variable "google_project_iam_binding_role" {
     type = string
     description = "Google project iam binding role name"
+    default = null
 }
 
 variable "google_service_account_iam_binding_role" {
     type = string
     description = "Google service account iam binding role name"
+    default = null
 }
 
 variable "google_service_account_iam_binding_members" {
     type = list(string)
     description = "Google service account iam binding list members"
+    default = []
 }

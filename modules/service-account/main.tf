@@ -7,7 +7,7 @@ resource "google_service_account" "service_account" {
 
 // Grant role permissions to service account to project level
 resource "google_project_iam_binding" "project" {
-  // count = to be defined
+  count = (var.google_project_iam_binding_role == null || var.google_project_iam_binding_role == "") ? 0 : 1
 
   project = var.project_id
   role    = var.google_project_iam_binding_role
@@ -17,7 +17,7 @@ resource "google_project_iam_binding" "project" {
 
 // Grant service account user role to member for the service account
 resource "google_service_account_iam_binding" "admin-account-iam" {
-  // count = to be defined
+  count = (var.google_service_account_iam_binding_role == null || var.google_service_account_iam_binding_role == "") ? 0 : 1
 
   service_account_id = google_service_account.service_account.name
   role               = var.google_service_account_iam_binding_role

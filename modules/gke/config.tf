@@ -6,6 +6,6 @@ provider "google" {
 terraform {
   backend "gcs" {
     bucket  = "pf-tfstate"
-    prefix  = "service-account/sa-terraform"
+    prefix  = "gke/init-cluster"
   }
 }
