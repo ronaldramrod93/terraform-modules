@@ -3,4 +3,6 @@ provider "google" {
     project = var.project_id 
 }
 
-backend "gcs" {}
+terraform {
+    backend "gcs" {}
+}
