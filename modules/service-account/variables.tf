@@ -18,16 +18,10 @@ variable "google_service_account_display_name" {
     description = "Google service account display name"
 }
 
-variable "google_project_iam_binding_role" {
-    type = string
-    description = "Google project iam binding role name"
-    default = null
-}
-
 variable "google_project_iam_binding" {
     type = list(object({
       role = string
-      members = optional(list(string),[])
+      members = optional(list(string), [])
     }))
     default = []
     description = "Grant roles to a list of members for the GCP project"
@@ -38,6 +32,6 @@ variable "google_service_account_iam_binding" {
       role = string
       members = list(string)
     }))
-    default = []
+
     description = "Grant roles to a list of members for the service account"
 }

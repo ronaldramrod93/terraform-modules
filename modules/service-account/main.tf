@@ -12,7 +12,7 @@ resource "google_project_iam_binding" "project_iam_binding" {
   project = var.project_id
   role    = var.google_project_iam_binding[count.index].role
 
-  members = ( var.google_project_iam_binding[count.index].members == [] || var.google_project_iam_binding[count.index].members == null) ? ["serviceAccount:${google_service_account.service_account.email}"] : var.google_project_iam_binding[count.index].members
+  members = length(var.google_project_iam_binding[count.index].members) == 0 ? ["serviceAccount:${google_service_account.service_account.email}"] : var.google_project_iam_binding[count.index].members
 }
 
 // Grant roles to a list of members for the Service account
