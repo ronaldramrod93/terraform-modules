@@ -5,22 +5,22 @@ resource "google_service_account" "service_account" {
   project      = var.project_id
 }
 
-// Grant role permissions to service account to project level
-resource "google_project_iam_binding" "project" {
-  count = (var.google_project_iam_binding_role == null || var.google_project_iam_binding_role == "") ? 0 : 1
+// Grant roles to a list of members for the GCP project
+resource "google_project_iam_binding" "project_iam_binding" {
+  count = length(var.google_project_iam_binding)
 
   project = var.project_id
-  role    = var.google_project_iam_binding_role
+  role    = var.google_project_iam_binding[count.index].role
 
-  members = ["serviceAccount:${google_service_account.service_account.email}"]
+  members = ( var.google_project_iam_binding[count.index].members == [] || var.google_project_iam_binding[count.index].members == null) ? ["serviceAccount:${google_service_account.service_account.email}"] : var.google_project_iam_binding[count.index].members
 }
 
-// Grant service account user role to member for the service account
-resource "google_service_account_iam_binding" "admin-account-iam" {
-  count = (var.google_service_account_iam_binding_role == null || var.google_service_account_iam_binding_role == "") ? 0 : 1
+// Grant roles to a list of members for the Service account
+resource "google_service_account_iam_binding" "service_account_iam_binding" {
+  count = length(var.google_service_account_iam_binding)
 
   service_account_id = google_service_account.service_account.name
-  role               = var.google_service_account_iam_binding_role
+  role               = var.google_service_account_iam_binding[count.index].role
 
-  members = var.google_service_account_iam_binding_members
+  members = var.google_service_account_iam_binding[count.index].members
 }
