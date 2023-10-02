@@ -25,19 +25,19 @@ variable "google_project_iam_binding_role" {
 }
 
 variable "google_project_iam_binding" {
-    type = optional(list(object({
+    type = list(object({
       role = string
       members = optional(list(string),[])
-    })), [])
-
+    }))
+    default = []
     description = "Grant roles to a list of members for the GCP project"
 }
 
 variable "google_service_account_iam_binding" {
-    type = optional(list(object({
+    type = list(object({
       role = string
       members = list(string)
-    })),[])
-
+    }))
+    default = []
     description = "Grant roles to a list of members for the service account"
 }
