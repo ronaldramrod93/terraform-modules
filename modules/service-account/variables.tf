@@ -24,7 +24,16 @@ variable "google_project_iam_binding" {
       members = optional(list(string), [])
     }))
     default = []
-    description = "Grant roles to a list of members for the GCP project"
+    description = "Google project iam binding"
+}
+
+variable "google_project_iam_member" {
+    type = list(object({
+      role = string
+      member = optional(string, "")
+    }))
+    default = []
+    description = "Google project iam member"
 }
 
 variable "google_service_account_iam_binding" {
@@ -32,6 +41,15 @@ variable "google_service_account_iam_binding" {
       role = string
       members = list(string)
     }))
+    default = []
+    description = "Google service account iam binding"
+}
 
-    description = "Grant roles to a list of members for the service account"
+variable "google_service_account_iam_member" {
+    type = list(object({
+      role = string
+      members = string
+    }))
+    default = []
+    description = "Google service account iam member"
 }

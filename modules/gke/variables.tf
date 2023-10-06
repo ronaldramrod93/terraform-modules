@@ -8,12 +8,12 @@ variable "region" {
     description = "GCP region"
 }
 
-variable "google_service_account_account_id" {
-    type = string
-    description = "Google service account ID"
+variable "google_container_cluster_name" {
+  type = string
+  description = "Google container cluster name"
 }
 
-variable "google_service_account_display_name" {
-    type = string
-    description = "Google service account display name"
+variable "google_service_account_account_id" {
+  type = string
+  description = "Google service account ID"
 }

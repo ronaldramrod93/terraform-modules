@@ -1,3 +1,4 @@
+// TODO - add condition blocks in google_project_iam and google_service_account_iam resources
 resource "google_service_account" "service_account" {
   account_id   = var.google_service_account_account_id
   display_name = var.google_service_account_display_name
@@ -5,7 +6,6 @@ resource "google_service_account" "service_account" {
   project      = var.project_id
 }
 
-// Grant roles to a list of members for the GCP project
 resource "google_project_iam_binding" "project_iam_binding" {
   count = length(var.google_project_iam_binding)
 
@@ -15,7 +15,15 @@ resource "google_project_iam_binding" "project_iam_binding" {
   members = length(var.google_project_iam_binding[count.index].members) == 0 ? ["serviceAccount:${google_service_account.service_account.email}"] : var.google_project_iam_binding[count.index].members
 }
 
-// Grant roles to a list of members for the Service account
+resource "google_project_iam_member" "project_iam_member" {
+  count = length(var.google_project_iam_member)
+
+  project = var.project_id
+  role    = var.google_project_iam_member[count.index].role
+
+  member = var.google_project_iam_member[count.index].member == "" ? ["serviceAccount:${google_service_account.service_account.email}"] : var.google_project_iam_member[count.index].member
+}
+
 resource "google_service_account_iam_binding" "service_account_iam_binding" {
   count = length(var.google_service_account_iam_binding)
 
@@ -23,4 +31,13 @@ resource "google_service_account_iam_binding" "service_account_iam_binding" {
   role               = var.google_service_account_iam_binding[count.index].role
 
   members = var.google_service_account_iam_binding[count.index].members
+}
+
+resource "google_service_account_iam_member" "service_account_iam_member" {
+  count = length(var.google_service_account_iam_member)
+
+  service_account_id = google_service_account.service_account.name
+  role               = var.google_service_account_iam_member[count.index].role
+
+  member = var.google_service_account_iam_member[count.index].member
 }
