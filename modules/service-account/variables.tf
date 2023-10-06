@@ -48,7 +48,7 @@ variable "google_service_account_iam_binding" {
 variable "google_service_account_iam_member" {
     type = list(object({
       role = string
-      members = string
+      member = string
     }))
     default = []
     description = "Google service account iam member"
