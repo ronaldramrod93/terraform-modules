@@ -21,7 +21,7 @@ resource "google_project_iam_member" "project_iam_member" {
   project = var.project_id
   role    = var.google_project_iam_member[count.index].role
 
-  member = var.google_project_iam_member[count.index].member == "" ? ["serviceAccount:${google_service_account.service_account.email}"] : var.google_project_iam_member[count.index].member
+  member = var.google_project_iam_member[count.index].member == "" ? "serviceAccount:${google_service_account.service_account.email}" : var.google_project_iam_member[count.index].member
 }
 
 resource "google_service_account_iam_binding" "service_account_iam_binding" {
