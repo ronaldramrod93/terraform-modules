@@ -13,6 +13,8 @@ resource "google_container_cluster" "container_cluster" {
   # node pool and immediately delete it.
   remove_default_node_pool = true
   initial_node_count       = 1
+
+  deletion_protection = false
 }
 
 resource "google_container_node_pool" "primary_preemptible_nodes" {
