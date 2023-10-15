@@ -17,3 +17,53 @@ variable "google_service_account_account_id" {
   type = string
   description = "Google service account ID"
 }
+
+variable "google_container_cluster_networking_mode" {
+  type = string
+  description = "Cluster networking mode"
+}
+
+variable "google_container_cluster_private_cluster_config_enable_private_nodes" {
+  type = bool
+  description = "Enable private cluster feature, nodes only have private IP addresses"
+}
+
+variable "google_container_cluster_private_cluster_config_enable_private_endpoint" {
+  type = bool
+  description = "The IP address used by the control plane will only be private"
+}
+
+variable "google_container_cluster_private_cluster_config_master_ipv4_cidr_block" {
+  type = string
+  description = "IP address range used by the control plane"
+}
+
+variable "google_container_cluster_ip_allocation_policy_cluster_secondary_range_name" {
+  type = string
+  description = "Name of the secondary range name used for pod IP addresses"
+}
+
+variable "google_container_cluster_ip_allocation_policy_services_secondary_range_name" {
+  type = string
+  description = "Name of the secondary range name for service IP addresses"
+}
+
+variable "google_container_cluster_network_policy_enabled" {
+  type = bool
+  description = "Enable the network policy"
+}
+
+variable "google_container_node_pool_node_count" {
+  type = number
+  description = "The number of nodes per instance group"
+}
+
+variable "google_container_node_pool_preemptible" {
+  type = bool
+  description = "Enable the utilization of preemptible VM instances"
+}
+
+variable "google_container_node_pool_machine_type" {
+  type = string
+  description = "the name of Google Compute Engine machine type"
+}

@@ -6,6 +6,7 @@ data "google_service_account" "gke_sa" {
 resource "google_container_cluster" "container_cluster" {
   name     = var.google_container_cluster_name
   
+  # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#use-regional-clusters-distribute-workloads
   location = var.region
   
   # We can't create a cluster with no node pool defined, but we want to only use
@@ -16,13 +17,24 @@ resource "google_container_cluster" "container_cluster" {
 
   # Best-practice: Use VPC-native cluster for using alias IP address range. 
   # Refer to https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#vpc-native-clusters for more details. 
-  networking_mode = "VPC_NATIVE"
+  networking_mode = var.google_container_cluster_networking_mode # "VPC_NATIVE"
 
-  
+  # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#private-cluster-type
   private_cluster_config {
-    enable_private_nodes = true
-    enable_private_endpoint = true
-    master_ipv4_cidr_block = "TBD"
+    enable_private_nodes = var.google_container_cluster_private_cluster_config_enable_private_nodes #true
+    # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#minimize-control-plane-exposure
+    enable_private_endpoint = var.google_container_cluster_private_cluster_config_enable_private_endpoint #true
+    master_ipv4_cidr_block = var.google_container_cluster_private_cluster_config_master_ipv4_cidr_block #"TBD"
+  }
+
+  ip_allocation_policy {
+    cluster_secondary_range_name = var.google_container_cluster_ip_allocation_policy_cluster_secondary_range_name
+    services_secondary_range_name = var.google_container_cluster_ip_allocation_policy_services_secondary_range_name
+  }
+
+  # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#restrict-traffic-network-pols
+  network_policy {
+    enabled = var.google_container_cluster_network_policy_enabled #true
   }
 
   workload_identity_config {
@@ -33,19 +45,20 @@ resource "google_container_cluster" "container_cluster" {
   # deletion_protection = false
 }
 
-resource "google_container_node_pool" "primary_preemptible_nodes" {
+resource "google_container_node_pool" "container_node_pool" {
   name       = "${var.google_container_cluster_name}-node-pool"
 
   location   = var.region
   cluster    = google_container_cluster.container_cluster.name
-  node_count = 1
+  
+  node_count = var.google_container_node_pool_node_count
 
   node_config {
     # Use preemptible for saving cost reasons
-    preemptible  = true
+    preemptible  = var.google_container_node_pool_preemptible #true
     
     # minimum machine type in order to install Anthos Service Mesh 
-    machine_type = "e2-standard-4"
+    machine_type = var.google_container_node_pool_machine_type #"e2-standard-4"
 
     # Google recommends custom service accounts that have cloud-platform scope and permissions granted via IAM Roles.
     service_account = data.google_service_account.gke_sa.email

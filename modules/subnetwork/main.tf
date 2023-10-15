@@ -10,7 +10,8 @@ resource "google_compute_subnetwork" "compute_subnetwork" {
   region        = var.region
   network       = data.google_compute_network.compute_network.id
   
-  private_ip_google_access = var.google_compute_subnetwork_private_ip_google_access 
+  private_ip_google_access = var.google_compute_subnetwork_private_ip_google_access
+  
   dynamic "secondary_ip_range" {
     for_each = var.google_compute_subnetwork_secondary_ip_range
     content {
