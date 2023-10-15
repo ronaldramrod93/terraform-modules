@@ -35,3 +35,8 @@ variable "google_compute_subnetwork_secondary_ip_range" {
   }))
   description = "Secondary IP range in subnetwork"
 }
+
+variable "google_compute_subnetwork_private_ip_google_access" {
+  type = bool
+  description = "Enable access to google APIs only for internal IP addresses"
+}
