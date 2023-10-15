@@ -18,6 +18,11 @@ variable "google_service_account_account_id" {
   description = "Google service account ID"
 }
 
+variable "google_container_cluster_network" {
+  type = string
+  description = "Cluster network name"
+}
+
 variable "google_container_cluster_networking_mode" {
   type = string
   description = "Cluster networking mode"
