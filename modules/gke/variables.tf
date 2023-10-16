@@ -18,9 +18,9 @@ variable "google_service_account_account_id" {
   description = "Google service account ID"
 }
 
-variable "google_container_cluster_network" {
+variable "google_container_cluster_subnetwork" {
   type = string
-  description = "Cluster network name"
+  description = "Cluster subnetwork name"
 }
 
 variable "google_container_cluster_networking_mode" {
@@ -64,6 +64,12 @@ variable "google_container_cluster_ip_allocation_policy_services_secondary_range
 variable "google_container_cluster_network_policy_enabled" {
   type = bool
   description = "Enable the network policy"
+}
+
+variable "google_container_cluster_deletion_protection" {
+  type = bool
+  description = "Enable deletion protection"
+  default = true
 }
 
 variable "google_container_node_pool_node_count" {

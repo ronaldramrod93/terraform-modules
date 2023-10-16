@@ -1,6 +1,6 @@
 # Get the subnet information
 data "google_compute_subnetwork" "gke_subnet" {
-  name = var.google_container_cluster_network
+  name = var.google_container_cluster_subnetwork
 }
 
 # Get the service account email
@@ -23,9 +23,7 @@ resource "google_container_cluster" "container_cluster" {
   network = data.google_compute_subnetwork.gke_subnet.network
   subnetwork = data.google_compute_subnetwork.gke_subnet.self_link
 
-  # Best-practice: Use VPC-native cluster for using alias IP address range. 
-  # Refer to https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#vpc-native-clusters for more details. 
-  networking_mode = var.google_container_cluster_networking_mode # "VPC_NATIVE"
+  networking_mode = var.google_container_cluster_networking_mode
 
   # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#private-cluster-type
   private_cluster_config {
@@ -60,7 +58,7 @@ resource "google_container_cluster" "container_cluster" {
   }
 
   # ONLY should be uncomment when the deletion of cluster is required
-  # deletion_protection = false
+  deletion_protection = var.google_container_cluster_deletion_protection
 }
 
 resource "google_container_node_pool" "container_node_pool" {
