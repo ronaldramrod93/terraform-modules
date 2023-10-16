@@ -43,6 +43,14 @@ variable "google_container_cluster_private_cluster_config_master_ipv4_cidr_block
   description = "IP address range used by the control plane"
 }
 
+variable "google_container_cluster_master_authorized_networks_config_cidr_blocks" {
+  type = list(object({
+    cidr_block = string
+    display_name = string
+  }))
+  description = "CIDR blocks authorized for communication to the control plane"
+}
+
 variable "google_container_cluster_ip_allocation_policy_cluster_secondary_range_name" {
   type = string
   description = "Name of the secondary range name used for pod IP addresses"

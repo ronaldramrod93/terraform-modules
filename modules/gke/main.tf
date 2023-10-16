@@ -1,8 +1,9 @@
-# Get the service account email
+# Get the subnet information
 data "google_compute_subnetwork" "gke_subnet" {
   name = var.google_container_cluster_network
 }
 
+# Get the service account email
 data "google_service_account" "gke_sa" {
   account_id = var.google_service_account_account_id
 }
@@ -21,7 +22,7 @@ resource "google_container_cluster" "container_cluster" {
 
   network = data.google_compute_subnetwork.gke_subnet.network
   subnetwork = data.google_compute_subnetwork.gke_subnet.self_link
-  
+
   # Best-practice: Use VPC-native cluster for using alias IP address range. 
   # Refer to https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#vpc-native-clusters for more details. 
   networking_mode = var.google_container_cluster_networking_mode # "VPC_NATIVE"
@@ -32,6 +33,16 @@ resource "google_container_cluster" "container_cluster" {
     # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#minimize-control-plane-exposure
     enable_private_endpoint = var.google_container_cluster_private_cluster_config_enable_private_endpoint #true
     master_ipv4_cidr_block = var.google_container_cluster_private_cluster_config_master_ipv4_cidr_block #"TBD"
+  }
+
+  master_authorized_networks_config {
+    dynamic "cidr_blocks" {
+      for_each = var.google_container_cluster_master_authorized_networks_config_cidr_blocks
+      content {
+        cidr_block = cidr_blocks.value["cidr_block"]
+        display_name = cidr_blocks.value["display_name"]
+      }
+    }
   }
 
   ip_allocation_policy {
