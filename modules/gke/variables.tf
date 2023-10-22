@@ -61,6 +61,11 @@ variable "google_container_cluster_ip_allocation_policy_services_secondary_range
   description = "Name of the secondary range name for service IP addresses"
 }
 
+variable "google_container_cluster_default_max_pods_per_node" {
+  type = number
+  description = "Maximum number of pods per node in the cluster"
+}
+
 variable "google_container_cluster_network_policy_enabled" {
   type = bool
   description = "Enable the network policy"

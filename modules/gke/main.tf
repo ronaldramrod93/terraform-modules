@@ -25,12 +25,11 @@ resource "google_container_cluster" "container_cluster" {
 
   networking_mode = var.google_container_cluster_networking_mode
 
-  # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#private-cluster-type
   private_cluster_config {
-    enable_private_nodes = var.google_container_cluster_private_cluster_config_enable_private_nodes #true
+    enable_private_nodes = var.google_container_cluster_private_cluster_config_enable_private_nodes
     # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#minimize-control-plane-exposure
-    enable_private_endpoint = var.google_container_cluster_private_cluster_config_enable_private_endpoint #true
-    master_ipv4_cidr_block = var.google_container_cluster_private_cluster_config_master_ipv4_cidr_block #"TBD"
+    enable_private_endpoint = var.google_container_cluster_private_cluster_config_enable_private_endpoint
+    master_ipv4_cidr_block = var.google_container_cluster_private_cluster_config_master_ipv4_cidr_block
   }
 
   master_authorized_networks_config {
@@ -48,9 +47,10 @@ resource "google_container_cluster" "container_cluster" {
     services_secondary_range_name = var.google_container_cluster_ip_allocation_policy_services_secondary_range_name
   }
 
-  # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#restrict-traffic-network-pols
+  default_max_pods_per_node = var.google_container_cluster_default_max_pods_per_node
+
   network_policy {
-    enabled = var.google_container_cluster_network_policy_enabled #true
+    enabled = var.google_container_cluster_network_policy_enabled
   }
 
   workload_identity_config {
