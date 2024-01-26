@@ -71,3 +71,4 @@ No outputs.
 - Implement bucket's **encryption** configuration
 - Implement bucket's **lifecycle rules** configuration
 - Implement **logging**
+- Guide to **create a tfstate bucket**
