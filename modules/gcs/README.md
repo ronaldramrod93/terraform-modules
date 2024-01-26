@@ -60,6 +60,7 @@ No modules.
 | <a name="input_location"></a> [location](#input\_location) | location of the GCS bucket | `string` | n/a | yes |
 | <a name="input_project_id"></a> [project\_id](#input\_project\_id) | GCP project ID | `string` | n/a | yes |
 | <a name="input_region"></a> [region](#input\_region) | GCP region | `string` | n/a | yes |
+| <a name="input_storage_class"></a> [storage\_class](#input\_storage\_class) | storage class of the GCS bucket | `string` | `"STANDARD"` | no |
 
 ## Outputs
 

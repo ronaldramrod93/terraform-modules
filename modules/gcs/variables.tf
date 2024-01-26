@@ -18,6 +18,12 @@ variable "location" {
   description = "location of the GCS bucket"
 }
 
+variable "storage_class" {
+  type        = string
+  description = "storage class of the GCS bucket"
+  default     = "STANDARD"
+}
+
 variable "enable_versioning" {
   type        = bool
   description = "enable versioning in GCS"
