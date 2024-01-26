@@ -1,4 +1,3 @@
-// TODO - add condition blocks in google_project_iam and google_service_account_iam resources
 resource "google_service_account" "service_account" {
   account_id   = var.google_service_account_account_id
   display_name = var.google_service_account_display_name
