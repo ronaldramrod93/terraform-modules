@@ -6,7 +6,7 @@ This is the `gcs` module of the `roka_pf_tf-modules` project. This module is res
 
 ### Using Terragrunt module
 
-In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/gcs, where you will also find real examples.
+In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/gcs, where you will find real examples.
 
 ### Using Terraform module
 
