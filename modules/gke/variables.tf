@@ -49,6 +49,7 @@ variable "google_container_cluster_master_authorized_networks_config_cidr_blocks
     display_name = string
   }))
   description = "CIDR blocks authorized for communication to the control plane"
+  default = []
 }
 
 variable "google_container_cluster_ip_allocation_policy_cluster_secondary_range_name" {
