@@ -1,16 +1,16 @@
 # Compute Network Terraform Module
 
-This is the `compute network` module of the `roka_pf_tf-modules` project. This module is responsible for creating and managing Google Compute Network resources.
+This module is responsible for creating and managing Google Compute Network resources.
 
 ## Usage
 
-### Using Terragrunt module
+### Using with Terragrunt
 
-In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/network, where you will find real examples.
+In order to use this module with terragrunt, please refer to [here](https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/network) where you will find real examples.
 
-### Using Terraform module
+### Using with Terraform module
 
-If you only want use terraform, here is a basic example of how to use this module:
+If you prefer only to use terraform, here is a basic example of how to use this module:
 
 ```hcl
 module "network" {
