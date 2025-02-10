@@ -2,7 +2,7 @@
 
 This is the `gke` module of the `roka_pf_tf-modules` project. This module is responsible for creating and managing Google Kubernetes Engine (GKE) resources.
 
-# Pre requisite
+<!-- # Pre requisite -->
 - Create a network. Refer to this [network tf module](https://github.com/ronaldramrod93/roka_pf_tf-modules/tree/main/modules/network)
 - Create a subnetwork (primary and secondary IP address ranges). Refer to this [subnet tf module](https://github.com/ronaldramrod93/roka_pf_tf-modules/tree/main/modules/subnetwork)
 - Enable the follow API in the GCP project:
