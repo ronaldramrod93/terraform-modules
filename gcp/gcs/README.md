@@ -1,12 +1,12 @@
 # GCS Terraform Module
 
-This is the `gcs` module of the `roka_pf_tf-modules` project. This module is responsible for creating and managing Google Cloud Storage (GCS) resources.
+This module is responsible for creating and managing Google Cloud Storage (GCS) buckets.
 
 ## Usage
 
-### Using Terragrunt module
+### Using with Terragrunt
 
-In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/gcs, where you will find real examples.
+In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/terragrunt-modules/tree/main/gcp/gcs, where you will find real examples.
 
 ### Using Terraform module
 
@@ -14,7 +14,7 @@ If you only want use terraform, here is a basic example of how to use this modul
 
 ```hcl
 module "gcs" {
-    source = "git::https://github.com/ronaldramrod93/roka_pf_tf-modules.git//modules/gcs?ref=main"
+    source = "git::https://github.com/ronaldramrod93/terraform-modules.git//gcp/gcs?ref=main"
     
     bucket_name = "bucketname"
     location    = "us-central1"
@@ -31,13 +31,13 @@ module "gcs" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_google"></a> [google](#requirement\_google) | 5.13.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 6.20.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.13.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 6.20.0 |
 
 ## Modules
 
@@ -47,7 +47,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google_storage_bucket.pf-tfstate](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/storage_bucket) | resource |
+| [google_storage_bucket.pf-tfstate](https://registry.terraform.io/providers/hashicorp/google/6.20.0/docs/resources/storage_bucket) | resource |
 
 ## Inputs
 
