@@ -1,12 +1,12 @@
 # IAM Service account Terraform Module
 
-This is the `service-account` module of the `roka_pf_tf-modules` project. This module is responsible for creating and managing IAM service account resources.
+This is the `service-account` module of the `terraform-modules` project. This module is responsible for creating and managing IAM service account resources.
 
 ## Usage
 
 ### Using Terragrunt module
 
-In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/service-account, where you will also find real examples.
+In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/terragrunt-modules/tree/main/gcp/service-account, where you will also find real examples.
 
 ### Using Terraform module
 
@@ -14,7 +14,7 @@ If you only want use terraform, here is a basic example of how to use this modul
 
 ```hcl
 module "gcs" {
-    source = "git::https://github.com/ronaldramrod93/roka_pf_tf-modules.git//modules/service-account?ref=main"
+    source = "git::https://github.com/ronaldramrod93/terraform-modules.git//gcp/service-account?ref=main"
 
     project_id = "sre-devops-portfolio"
     region     = "us-central1"
@@ -31,7 +31,7 @@ module "gcs" {
     google_service_account_iam_member = [
       {
         role = "roles/iam.serviceAccountTokenCreator"
-        member = "user:roka.sre.devops.93@gmail.com"
+        member = "user:my-user@gmail.com"
       }
     ]
 }
@@ -41,13 +41,13 @@ module "gcs" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_google"></a> [google](#requirement\_google) | 5.13.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 6.27.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.13.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 6.27.0 |
 
 ## Modules
 
@@ -57,11 +57,11 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google_project_iam_binding.project_iam_binding](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/project_iam_binding) | resource |
-| [google_project_iam_member.project_iam_member](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/project_iam_member) | resource |
-| [google_service_account.service_account](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/service_account) | resource |
-| [google_service_account_iam_binding.service_account_iam_binding](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/service_account_iam_binding) | resource |
-| [google_service_account_iam_member.service_account_iam_member](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/service_account_iam_member) | resource |
+| [google_project_iam_binding.project_iam_binding](https://registry.terraform.io/providers/hashicorp/google/6.27.0/docs/resources/project_iam_binding) | resource |
+| [google_project_iam_member.project_iam_member](https://registry.terraform.io/providers/hashicorp/google/6.27.0/docs/resources/project_iam_member) | resource |
+| [google_service_account.service_account](https://registry.terraform.io/providers/hashicorp/google/6.27.0/docs/resources/service_account) | resource |
+| [google_service_account_iam_binding.service_account_iam_binding](https://registry.terraform.io/providers/hashicorp/google/6.27.0/docs/resources/service_account_iam_binding) | resource |
+| [google_service_account_iam_member.service_account_iam_member](https://registry.terraform.io/providers/hashicorp/google/6.27.0/docs/resources/service_account_iam_member) | resource |
 
 ## Inputs
 
