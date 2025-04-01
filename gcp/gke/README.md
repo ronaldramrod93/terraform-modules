@@ -1,14 +1,14 @@
 # GKE terraform module
 
-This is the `gke` module of the `roka_pf_tf-modules` project. This module is responsible for creating and managing Google Kubernetes Engine (GKE) resources.
+This is the `gke` module of the `terraform-modules` project. This module is responsible for creating and managing Google Kubernetes Engine (GKE) resources.
 
-<!-- # Pre requisite -->
-- Create a network. Refer to this [network tf module](https://github.com/ronaldramrod93/roka_pf_tf-modules/tree/main/modules/network)
-- Create a subnetwork (primary and secondary IP address ranges). Refer to this [subnet tf module](https://github.com/ronaldramrod93/roka_pf_tf-modules/tree/main/modules/subnetwork)
+## Prerequisite
+- Create a network. Refer to this [network tf module](https://github.com/ronaldramrod93/terraform-modules/tree/main/gcp/network)
+- Create a subnetwork (primary and secondary IP address ranges). Refer to this [subnet tf module](https://github.com/ronaldramrod93/terraform-modules/tree/main/gcp/subnetwork)
 - Enable the follow API in the GCP project:
   - Compute Engine API
   - Kubernetes Engine API
-- Create a Service Account for the terraform execution. Refer to this [IAM SA module](https://github.com/ronaldramrod93/roka_pf_tf-modules/tree/main/modules/service-account)
+- Create a Service Account for the terraform execution. Refer to this [IAM SA module](https://github.com/ronaldramrod93/terraform-modules/tree/main/gcp/service-account)
 
 ## Usage
 

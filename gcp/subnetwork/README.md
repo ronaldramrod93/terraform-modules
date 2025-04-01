@@ -1,12 +1,12 @@
 # Compute Subnetwork Terraform Module
 
-This is the `compute subnetwork` module of the `roka_pf_tf-modules` project. This module is responsible for creating and managing Google Compute Subnetwork resources.
+This is the `compute subnetwork` module of the `terraform-modules` project. This module is responsible for creating and managing Google Compute Subnetwork resources.
 
 ## Usage
 
 ### Using Terragrunt module
 
-In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/subnetwork, where you will find real examples.
+In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/terragrunt-modules/tree/main/gcp/subnetwork, where you will find real examples.
 
 ### Using Terraform module
 
@@ -14,7 +14,7 @@ If you only want use terraform, here is a basic example of how to use this modul
 
 ```hcl
 module "subnetwork" {
-  source = "git::https://github.com/ronaldramrod93/roka_pf_tf-modules.git//modules/subnetwork?ref=main"
+  source = "git::https://github.com/ronaldramrod93/terraform-modules.git//modules/subnetwork?ref=main"
   
   # Prerequisite: The compute network must already be created
   google_compute_network_name = "net-demo"
@@ -51,7 +51,7 @@ No requirements.
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | n/a |
+| <a name="provider_google"></a> [google](#provider\_google) | 6.27.0 |
 
 ## Modules
 

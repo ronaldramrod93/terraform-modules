@@ -2,11 +2,16 @@
 
 This module is responsible for creating and managing Google Compute Network resources.
 
+## Prerequisite
+- Enable Compute Engine API, use the below command:
+```bash
+gcloud services enable compute.googleapis.com --project YOUR_PROJECT_ID
+```
 ## Usage
 
 ### Using with Terragrunt
 
-In order to use this module with terragrunt, please refer to [here](https://github.com/ronaldramrod93/terragrunt-modules/tree/main/network) where you will find real examples.
+In order to use this module with terragrunt, please refer to [here](https://github.com/ronaldramrod93/terragrunt-modules/tree/main/gcp/network) where you will find real examples.
 
 ### Using with Terraform module
 
@@ -14,7 +19,7 @@ If you prefer only to use terraform, here is a basic example of how to use this 
 
 ```hcl
 module "network" {
-    source = "git::https://github.com/ronaldramrod93/terraform-modules.git//modules/network?ref=main"
+    source = "git::https://github.com/ronaldramrod93/terraform-modules.git//gcp/network?ref=main"
     
     google_compute_network_name = "net-demo"
     google_compute_network_description = "Network created by testing"
