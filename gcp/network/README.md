@@ -36,13 +36,13 @@ module "network" {
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_google"></a> [google](#requirement\_google) | 5.13.0 |
+| <a name="requirement_google"></a> [google](#requirement\_google) | 6.27.0 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_google"></a> [google](#provider\_google) | 5.13.0 |
+| <a name="provider_google"></a> [google](#provider\_google) | 6.27.0 |
 
 ## Modules
 
@@ -52,7 +52,7 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [google_compute_network.compute_network](https://registry.terraform.io/providers/hashicorp/google/5.13.0/docs/resources/compute_network) | resource |
+| [google_compute_network.compute_network](https://registry.terraform.io/providers/hashicorp/google/6.27.0/docs/resources/compute_network) | resource |
 
 ## Inputs
 
