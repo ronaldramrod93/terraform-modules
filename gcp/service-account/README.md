@@ -2,6 +2,12 @@
 
 This is the `service-account` module of the `terraform-modules` project. This module is responsible for creating and managing IAM service account resources.
 
+# Prerequisite
+- The service account used must have the below roles: 
+  * `roles/iam.serviceAccountAdmin` (Allows creating/deleting service accounts)
+  * `roles/iam.serviceAccountUser` (Allows impersonating/binding service accounts)
+  * `roles/resourcemanager.projectIamAdmin` (To assign predefined roles at the project level)
+
 ## Usage
 
 ### Using Terragrunt module
