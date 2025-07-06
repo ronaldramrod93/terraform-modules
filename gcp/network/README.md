@@ -3,10 +3,9 @@
 This module is responsible for creating and managing Google Compute Network resources.
 
 ## Prerequisite
-- Enable Compute Engine API, use the below command:
-```bash
-gcloud services enable compute.googleapis.com --project YOUR_PROJECT_ID
-```
+- Enable Compute Engine API, use the following command: `gcloud services enable compute.googleapis.com --project YOUR_PROJECT_ID`
+- The service account used must have the role: `roles/compute.networkAdmin`
+
 ## Usage
 
 ### Using with Terragrunt
