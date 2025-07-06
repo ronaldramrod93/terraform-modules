@@ -11,3 +11,8 @@ provider "google" {
   project = var.project_id
   region  = var.region
 }
+
+# Comment this block ONLY in the first run to create the tfstate bucket
+terraform {
+  backend "gcs" {}
+}

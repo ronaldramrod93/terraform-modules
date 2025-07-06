@@ -2,6 +2,9 @@
 
 This module is responsible for creating and managing Google Cloud Storage (GCS) buckets.
 
+## Prerequisite
+- The service account used must have the role: `roles/storage.admin`
+
 ## Usage
 
 ### Using with Terragrunt
