@@ -2,6 +2,9 @@
 
 This is the `compute subnetwork` module of the `terraform-modules` project. This module is responsible for creating and managing Google Compute Subnetwork resources.
 
+# Prerequisite
+- The service account used must have the role: `roles/compute.networkAdmin`
+
 ## Usage
 
 ### Using Terragrunt module
