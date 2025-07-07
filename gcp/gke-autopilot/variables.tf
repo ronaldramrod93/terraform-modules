@@ -48,11 +48,6 @@ variable "google_container_cluster_ip_allocation_policy_services_secondary_range
   description = "Name of the secondary range name for service IP addresses"
 }
 
-variable "google_container_cluster_network_policy_enabled" {
-  type = bool
-  description = "Enable the network policy"
-}
-
 variable "google_container_cluster_deletion_protection" {
   type = bool
   description = "Enable deletion protection"

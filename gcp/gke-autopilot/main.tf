@@ -34,10 +34,6 @@ resource "google_container_cluster" "container_cluster" {
     services_secondary_range_name = var.google_container_cluster_ip_allocation_policy_services_secondary_range_name
   }
 
-  network_policy {
-    enabled = var.google_container_cluster_network_policy_enabled
-  }
-
   workload_identity_config {
     workload_pool = "${var.project_id}.svc.id.goog"
   }
