@@ -26,7 +26,7 @@ resource "google_container_cluster" "container_cluster" {
     enable_private_nodes = var.google_container_cluster_private_cluster_config_enable_private_nodes
     # Best-practice: https://cloud.google.com/kubernetes-engine/docs/best-practices/networking#minimize-control-plane-exposure
     enable_private_endpoint = var.google_container_cluster_private_cluster_config_enable_private_endpoint
-    master_ipv4_cidr_block = var.google_container_cluster_private_cluster_config_master_ipv4_cidr_block
+    #master_ipv4_cidr_block = var.google_container_cluster_private_cluster_config_master_ipv4_cidr_block
   }
 
   ip_allocation_policy {
