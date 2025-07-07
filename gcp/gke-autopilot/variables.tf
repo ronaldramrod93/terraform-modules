@@ -33,10 +33,10 @@ variable "google_container_cluster_private_cluster_config_enable_private_endpoin
   description = "The IP address used by the control plane will only be private"
 }
 
-variable "google_container_cluster_private_cluster_config_master_ipv4_cidr_block" {
-  type = string
-  description = "IP address range used by the control plane"
-}
+#variable "google_container_cluster_private_cluster_config_master_ipv4_cidr_block" {
+#  type = string
+#  description = "IP address range used by the control plane"
+#}
 
 variable "google_container_cluster_ip_allocation_policy_cluster_secondary_range_name" {
   type = string
