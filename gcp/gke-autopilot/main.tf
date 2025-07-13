@@ -55,6 +55,9 @@ resource "google_container_cluster" "container_cluster" {
     dns_endpoint_config {
       allow_external_traffic = var.google_container_cluster_control_plane_endpoints_config_dns_endpoint_config_allow_external_traffic
     }
+    ip_endpoints_config {
+      enabled = var.google_container_cluster_control_plane_endpoints_config_ip_endpoints_config_enabled
+    }
   }
 
   # Deletion protection prevents the accidental deletion of your cluster.

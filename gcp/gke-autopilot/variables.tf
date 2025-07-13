@@ -65,3 +65,9 @@ variable "google_container_cluster_control_plane_endpoints_config_dns_endpoint_c
   description = "Allow external traffic to the control plane DNS endpoint"
   default = true
 }
+
+variable "google_container_cluster_control_plane_endpoints_config_ip_endpoints_config_enabled" {
+  type = bool
+  description = "Allow direct IP access for the control plane"
+  default = false
+}
