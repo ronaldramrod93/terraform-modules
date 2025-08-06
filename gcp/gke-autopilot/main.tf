@@ -38,7 +38,6 @@ resource "google_container_cluster" "container_cluster" {
     workload_pool = "${var.project_id}.svc.id.goog"
   }
 
-
   # Release channel
   release_channel {
     channel = "REGULAR"
@@ -73,6 +72,10 @@ resource "google_container_cluster" "container_cluster" {
     managed_prometheus {
       enabled = true
     }
+  }
+
+  fleet {
+    project = var.project_id
   }
 
 }
