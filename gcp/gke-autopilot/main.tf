@@ -78,4 +78,10 @@ resource "google_container_cluster" "container_cluster" {
     project = var.project_id
   }
 
+  timeouts {
+    create = "30m"  # Increase to 30 minutes
+    update = "20m"
+    delete = "20m"
+  }
+
 }
