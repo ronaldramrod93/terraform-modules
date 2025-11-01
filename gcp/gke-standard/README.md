@@ -1,29 +1,36 @@
-# GKE terraform module
+# GKE terraform module (STATUS: IN PROGRESS)
 
 This is the `gke` module of the `terraform-modules` project. This module is responsible for creating and managing Google Kubernetes Engine (GKE) resources.
 
 ## Prerequisite
+- The service account used must have the role: `Roles/container.clusterAdmin`
 - Create a network. Refer to this [network tf module](https://github.com/ronaldramrod93/terraform-modules/tree/main/gcp/network)
 - Create a subnetwork (primary and secondary IP address ranges). Refer to this [subnet tf module](https://github.com/ronaldramrod93/terraform-modules/tree/main/gcp/subnetwork)
 - Enable the follow API in the GCP project:
   - Compute Engine API
   - Kubernetes Engine API
+  ```bash
+  # Compute Engine API
+  gcloud services enable compute.googleapis.com --project YOUR_PROJECT_ID
+  # Kubernetes Engine API
+  gcloud services enable container.googleapis.com --project YOUR_PROJECT_ID
+  ```
 - Create a Service Account for the terraform execution. Refer to this [IAM SA module](https://github.com/ronaldramrod93/terraform-modules/tree/main/gcp/service-account)
 
 ## Usage
 
 ### Using Terragrunt module
 
-In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/roka_pf_tg-modules/tree/main/gke, where you will find real examples.
+In order to use this module with terragrunt, please refer to https://github.com/ronaldramrod93/terragrunt-modules/tree/main/gcp/gke, where you will find real examples.
 
 ### Using Terraform module
 
 If you only want use terraform, here is a basic example of how to use this module:
 
-
+#### Example: Standard Cluster
 ```hcl
 module "gke" {
-    source = "git::https://github.com/ronaldramrod93/roka_pf_tf-modules.git//modules/gke?ref=main"
+    source = "git::https://github.com/ronaldramrod93/terraform-modules.git//gcp/gke?ref=main"
 
     google_container_cluster_name = "portfolio"
     google_service_account_account_id = "gke-sa"

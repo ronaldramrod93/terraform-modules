@@ -26,6 +26,11 @@ variable "google_container_cluster_subnetwork" {
 variable "google_container_cluster_networking_mode" {
   type = string
   description = "Cluster networking mode"
+  default = "VPC_NATIVE"
+  validation {
+    condition = contains(["VPC_NATIVE", "ROUTES"], var.google_container_cluster_networking_mode)
+    error_message = "Networking mode must be either VPC_NATIVE or ROUTES"
+  }
 }
 
 variable "google_container_cluster_private_cluster_config_enable_private_nodes" {
@@ -65,6 +70,7 @@ variable "google_container_cluster_ip_allocation_policy_services_secondary_range
 variable "google_container_cluster_default_max_pods_per_node" {
   type = number
   description = "Maximum number of pods per node in the cluster"
+  default = 32
 }
 
 variable "google_container_cluster_network_policy_enabled" {
@@ -75,6 +81,28 @@ variable "google_container_cluster_network_policy_enabled" {
 variable "google_container_cluster_deletion_protection" {
   type = bool
   description = "Enable deletion protection"
+  default = true
+}
+
+variable "google_container_cluster_enable_autopilot" {
+  type = bool
+  description = "Enable Autopilot mode for the GKE cluster"
+  default = false
+}
+
+variable "google_container_cluster_datapath_provider" {
+  type = string
+  description = "Datapath provider for the GKE cluster"
+  default = "ADVANCED_DATAPATH"
+  validation {
+    condition = contains(["LEGACY_DATAPATH", "ADVANCED_DATAPATH"], var.google_container_cluster_datapath_provider)
+    error_message = "Datapath provider must be either LEGACY_DATAPATH or ADVANCED_DATAPATH"
+  }
+}
+
+variable "google_container_cluster_control_plane_endpoints_config_dns_endpoint_config_allow_external_traffic" {
+  type = bool
+  description = "Allow external traffic to the control plane DNS endpoint"
   default = true
 }
 
