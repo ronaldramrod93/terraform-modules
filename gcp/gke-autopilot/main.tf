@@ -74,8 +74,8 @@ resource "google_container_cluster" "container_cluster" {
     }
   }
 
-  #fleet {
-  #  project = var.project_id
-  #}
+  fleet {
+    project = var.project_id
+  }
 
 }
