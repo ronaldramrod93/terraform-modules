@@ -13,6 +13,6 @@ provider "google" {
 }
 
 # Comment this block ONLY in the first run to create the tfstate bucket
-#terraform {
-#  backend "gcs" {}
-#}
+terraform {
+  backend "gcs" {}
+}
